@@ -1,11 +1,9 @@
 try:
     import requests
-    import re
     import socket
     import select
 except:
     import urequests as requests
-    import ure as re
     import usocket as socket
     import uselect as select
 
@@ -25,7 +23,8 @@ class SonosDiscovery:
     def __init__(self):
         self._sock = socket.socket(
                 socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-        self._sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
+        IP_MULTICAST_TTL = 33
+        self._sock.setsockopt(socket.IPPROTO_IP, IP_MULTICAST_TTL, 2)
 
     
     """
@@ -172,7 +171,7 @@ class Sonos:
     def volume(self):
         r = False
         r = self.__run_rdctrl(VOLUME_XML, VOLUME_HDRS)
-        return int(re.findall(r'[0-9]+', r.text)[1]) 
+        return int(r.text.split("CurrentVolume>")[1][:-2]) 
     
     
     """
@@ -191,13 +190,6 @@ test example
 if __name__ == "__main__":
     s = Sonos('Office')
     print(s.state)
-    s.play()
-    s.stop()
-    s.play()
-    sleep(1)
     s.volume_up(10)
-    s.next()
     sleep(4)
     s.volume_down(10)
-    s.previous()
-    s.pause()
