@@ -1,15 +1,15 @@
 # SonosController
 
-Library for communicating with and controlling Sonos Speakers trough Sonos' http server suitable for use both Python and Micropython
+Library for controlling Sonos Speakers by using Sonos' http server. Suitable for both Python and Micropython use.
 
 - License URL: https://www.gnu.org/licenses/gpl-3.0.html
 - License GNU General Public License v3.0
 
-[![Generic badge](https://img.shields.io/badge/Python-3-blue)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/Micropython-1.5-yellow)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Python-3.5.x-blue)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Micropython-1.5.x-yellow)](https://shields.io/)
 
 ## Requirements
-- [Python 3.x](https://www.python.org/downloads/)
+- [Python 3.5.x](https://www.python.org/downloads/)
 
 or
 
@@ -29,7 +29,7 @@ from sonos import Sonos
 s = Sonos("<Speaker's Name>")
 
 ```
-**I order to see your device's name you can open sonos' phone app and go to Settings>System>Products**
+**I order to see your device's name you can open sonos' Android or IOS application and go to Settings>System>Products**
 
 After that you can simply call the object's function in order to controll the speaker:
 ```python
