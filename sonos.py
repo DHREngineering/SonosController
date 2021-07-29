@@ -189,7 +189,8 @@ test example
 """
 if __name__ == "__main__":
     s = Sonos('Office')
-    print(s.state)
-    s.volume_up(10)
-    sleep(4)
-    s.volume_down(10)
+    for _ in range(60):
+        s.play()
+        sleep(0.5)
+        s.stop()
+        sleep(0.5)
