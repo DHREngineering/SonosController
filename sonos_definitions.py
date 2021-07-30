@@ -63,11 +63,22 @@ s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
 <s:Body><u:GetVolume xmlns:u="urn:schemas-upnp-org:service:RenderingControl:1"><InstanceID>0</InstanceID><Channel>Master</Channel></u:GetVolume>
 </s:Body></s:Envelope>
 """
+
+POSITION_INFO_XML = """<?xml version="1.0"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" 
+s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<s:Body><u:GetPositionInfo xmlns:u="urn:schemas-upnp-org:service:AVTransport:1"><InstanceID>0</InstanceID><Channel>Master</Channel></u:GetPositionInfo>
+</s:Body></s:Envelope>
+"""
+
+
+
 VOLUME_CHNG_XML_1 = """<?xml version="1.0"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:SetVolume xmlns:u="urn:schemas-upnp-org:service:RenderingControl:1"><InstanceID>0</InstanceID><Channel>Master</Channel><DesiredVolume>"""
 VOLUME_CHNG_XML_2 = """</DesiredVolume></u:SetVolume></s:Body></s:Envelope>"""
 
 
-VOLUME_HDRS ={'Content-Type': 'text/xml; charset="utf-8"',"soapaction":"urn:schemas-upnp-org:service:RenderingControl:1#GetVolume"}
+POSITION_INFO_HDRS = {'Content-Type': 'text/xml; charset="utf-8"',"soapaction":"urn:schemas-upnp-org:service:AVTransport:1#GetPositionInfo"} 
+VOLUME_HDRS = {'Content-Type': 'text/xml; charset="utf-8"',"soapaction":"urn:schemas-upnp-org:service:RenderingControl:1#GetVolume"}
 PLAY_HDRS = {'Content-Type': 'text/xml; charset="utf-8"',"soapaction":"urn:schemas-upnp-org:service:AVTransport:1#Play"}
 STOP_HDRS = {'Content-Type': 'text/xml; charset="utf-8"',"soapaction":"urn:schemas-upnp-org:service:AVTransport:1#Stop"}
 PAUSE_HDRS = {'Content-Type': 'text/xml; charset="utf-8"',"soapaction":"urn:schemas-upnp-org:service:AVTransport:1#Pause"}

@@ -153,6 +153,14 @@ class Sonos:
         return requests.post(link, headers=hdr, data=xml)
     
     
+    @property
+    def position_info(self):
+        r = self.__run_avt(POSITION_INFO_HDRS, POSITION_INFO_XML)
+        res = r.text.split("TrackDuration>")
+        td = res[1][:-2]
+        rt = res[2].split("RelTime>")[1][:-2]
+        return td, rt
+   
     """
     Property function for getting the current speaker state
         @return string of the current speaker state
