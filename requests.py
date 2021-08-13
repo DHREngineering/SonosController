@@ -52,8 +52,9 @@ def request(method, url, data=None, json=None, headers={}, stream=None):
         for k in headers:
             s.write(k)
             s.write(b": ")
-            s.write(headers[k])
-            s.write(b"\r\n")
+            for v in headers[k]:
+                s.write(v)
+            s.send(b"\r\n")
         if json is not None:
             assert data is None
             import ujson
@@ -84,7 +85,7 @@ def request(method, url, data=None, json=None, headers={}, stream=None):
                 raise NotImplementedError("Redirects not yet supported")
     except OSError:
         s.close()
-        raise
+    
     resp = Response(s.read())
     s.close()
     return resp

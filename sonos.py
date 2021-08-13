@@ -3,7 +3,7 @@ try:
     import socket
     import select
 except:
-    import urequests as requests
+    #import urequests as requests
     import usocket as socket
     import uselect as select
 
